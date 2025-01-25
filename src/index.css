@@ -54,6 +54,7 @@ body {
         .filters {
           .active-filter {
             color: var(--brightBlue);
+            font-size: 12px;
             font-weight: 600;
           }
         }
@@ -122,6 +123,7 @@ button {
 .filters {
   .active-filter {
     color: var(--brightBlue);
+    font-size: 12px;
     font-weight: 600;
   }
 }
