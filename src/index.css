@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+:root {
+  --brightBlue: hsl(220, 98%, 61%);
+  --checkBG: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  /*
+    light theme
+  */
+  --lightGrey: hsl(0, 0%, 98%);
+  --veryLightGrayishBlue: hsl(236, 33%, 92%);
+  --lightGrayishBlue:hsl(233, 11%, 84%);
+  --darkGrayishBlue: hsl(236, 9%, 61%);
+  --veryDarkGrayishBlue: hsl(235, 19%, 35%);
+  /*
+    dark theme
+  */
+  --veryDarkBlue: hsl(235, 21%, 11%);
+  --veryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --lightGrayishBlueHover: hsl(236, 33%, 92%);
+}
+
+body {
+  font-size: 18px;
+  font-family: "Josefin Sans", serif;
+  background: var(--lightGrey);
+
+  font-weight: 300;
+}
+
+.dark {
+  color: var(--lightGrey);
+  background: var(--veryDarkBlue);
+
+  main {
+
+    .todo-container {
+      color: var(--darkGrayishBlue);
+
+      .todo-body {
+        box-shadow: 1px 5px 10px 2px var(--veryDarkBlue);
+
+        .todo-item {
+          #checked {
+            border-color: var(--veryDarkBlue);
+          }
+        }
+      }
+      button {
+        color: var(--lightGrey);
+      }
+
+      .filters-block, .todo-item {
+        background: var(--veryDarkDesaturatedBlue);
+
+        .filters {
+          .active-filter {
+            color: var(--brightBlue);
+            font-weight: 600;
+          }
+        }
+      }
+
+      .todo-input {
+        input {
+          color: var(--lightGrey);
+          background: var(--veryDarkDesaturatedBlue);
+        }
+      }
+
+      .info-block {
+        color: var(--darkGrayishBlue);
+      }
+    }
+
+    &:before {
+      background-image: url("./assets/bg-desktop-dark.jpg");
+    }
+  }
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  z-index: 5;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    background-image: url("./assets/bg-desktop-light.jpg") ;
+    background-size: cover;
+    z-index: -1;
+  }
+}
+
+.todo-container {
+  padding-top: 1.75em;
+  max-width: 360px;
+  width: 100%;
+}
+
+button, input {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+button {
+  cursor: pointer;
+}
+
+.info-block {
+  text-align: center;
+  padding-top: 2.8em;
+  font-size: 10px;
+}
+
+.filters {
+  .active-filter {
+    color: var(--brightBlue);
+    font-weight: 600;
+  }
+}

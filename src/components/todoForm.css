@@ -1,0 +1,22 @@
+.todo-input {
+    position: relative;
+    input {
+        height: 44px;
+        font-size: 12px;
+        width: 100%;
+        padding: 0.25em 3.7em;
+        border-radius: 5px;
+        background: #fff;
+    }
+    button {
+        color: #fff;
+        position: absolute;
+        font-size: 16px;
+        right: 0;
+        z-index: 1;
+        width: 44px;
+        height: 44px;
+        background: var(--darkGrayishBlue);
+        border-radius: 0 5px 5px 0;
+    }
+}

@@ -1,0 +1,19 @@
+.filters-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+    font-size: 10px;
+    width: 100%;
+    padding: 1.5em;
+
+    border-radius: 0 0 5px 5px;
+    background: #fff;
+
+    .filters {
+
+        button {
+            margin-right: 1.5em;
+        }
+    }
+}

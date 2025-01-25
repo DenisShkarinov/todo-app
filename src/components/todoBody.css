@@ -1,0 +1,53 @@
+
+.todo-body {
+    margin-top: 0.9em;
+    box-shadow: 1px 5px 10px 2px var(--darkGrayishBlue);
+
+    .todo-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 42px;
+        font-size: 10px;
+        width: 100%;
+        padding: 1.5em;
+
+        background: #fff;
+        border-bottom: 1px solid var(--darkGrayishBlue);
+
+        .check {
+            cursor: pointer;
+            width: 17px;
+            height: 17px;
+            border: 1px solid var(--lightGrayishBlue);
+            border-radius: 50%;
+
+            svg {
+                vertical-align: middle;
+            }
+        }
+        #checked {
+            background: var(--checkBG);
+            color: var(--lightGrey);
+        }
+
+        &:first-child {
+            border-radius: 5px 5px 0 0;
+        }
+
+        p {
+            padding: 0 15px;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+        .delete {
+            font-size: 16px;
+        }
+    }
+}
+
+.done {
+    color: var(--darkGrayishBlue);
+    text-decoration: line-through;
+}
