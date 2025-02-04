@@ -7,19 +7,19 @@ export default function TodoBody ({ todos, handleDoneTask, handleRemove, setFilt
     return (
         <div className={"todo-body"}>
             {
-                todos.map(item => (
-                    <div key={item.id} className="todo-item">
+                Object.entries(todos).map(([id,  { taskValue, done }]) => (
+                    <div key={id} className="todo-item">
                         <button
-                            id={item.done ? 'checked' : null}
-                            onClick={() => handleDoneTask(item.id)}
+                            id={done ? 'checked' : null}
+                            onClick={() => handleDoneTask(id)}
                             className={'check'}
                         >
                             {
-                                item.done ? <FontAwesomeIcon icon={faCheck} /> : ''
+                                done ? <FontAwesomeIcon icon={faCheck} /> : ''
                             }
                         </button>
-                        <p className={ item.done ? "done" : "" }>{ item.taskValue }</p>
-                        <button onClick={() => handleRemove(item.id)} className={"delete"}>X</button>
+                        <p className={ done ? "done" : "" }>{ taskValue }</p>
+                        <button onClick={() => handleRemove(id)} className={"delete"}>X</button>
                     </div>
                 ))
             }
