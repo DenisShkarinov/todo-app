@@ -2,7 +2,7 @@ import {useState} from "react";
 import { ref, push } from 'firebase/database'
 import { db } from '../firebase';
 
-export const useAddTodo = (todos, setTodos) => {
+export const useAddTodo = () => {
     const [value, setValue] = useState('');
 
     const addTodos = () => {

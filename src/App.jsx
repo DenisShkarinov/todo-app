@@ -11,16 +11,25 @@ import TodoBody from "./components/TodoBody.jsx";
 
 import Info from "./components/Info.jsx";
 import {useAddTodo} from "./hooks/useAddTodo.js";
+import {useDeleteTodo} from "./hooks/useDeleteTodo.js";
+import {useDone} from "./hooks/useDone.js";
 
 function App() {
     const [theme, setTheme] = useState(true);
     const { todos, setTodos } = useRequestTodos()
     const { value, setValue, addTodos } = useAddTodo()
+    const { requestDeleteTodo, clearCompletedTodos } = useDeleteTodo()
+    const { requestDone } = useDone()
+
     const [filter, setFilter] = useState("All");
 
     const switchTheme = () => {
         setTheme(!theme);
     }
+
+    const completedTodos = Object.fromEntries(Object.entries(todos).filter(([id, { taskValue, done }]) => done === true))
+    const activeTodos = Object.fromEntries(Object.entries(todos).filter(([id, { taskValue, done }]) => !done))
+    const leftTodos = Object.entries(todos).filter(todo => !todo.done).length
 
     useEffect(() => {
         if (theme === false) {
@@ -30,24 +39,6 @@ function App() {
             document.body.classList.remove('dark');
         }
     }, [theme]);
-
-    /*
-    const handleDoneTask = (id) => {
-        setTodos(todos => todos.map(todo => {
-            return todo.id === id ? { ...todo, done: !todo.done } : todo
-        }))
-    }
-    const completedTodos = todos.filter(todo => todo.done)
-    const activeTodos = todos.filter(todo => !todo.done)
-    const leftTodos = todos.filter(todo => !todo.done).length
-
-    const clearCompletedTodos = () => {
-        setTodos(todos.filter(todo => !todo.done))
-    }
-
-    const handleRemove = (id) => {
-        setTodos(todos => todos.filter(todo => todo.id !== id))
-    }*/
 
     return (
         <main >
@@ -66,16 +57,15 @@ function App() {
                         filter === 'All'
                             ? todos
                             : filter === 'Completed'
-                                ? 'completedTodos'
-                                : 'activeTodos'
+                                ? completedTodos
+                                : activeTodos
                     }
                     filter={filter}
-                    /*handleDoneTask={handleDoneTask}
-                    handleRemove={handleRemove}*/
-                    /*theme={theme}
+                    requestDone={requestDone}
+                    requestDeleteTodo={requestDeleteTodo}
                     setFilter={setFilter}
                     clearCompletedTodos={clearCompletedTodos}
-                    leftTodos={leftTodos}*/
+                    leftTodos={leftTodos}
                 />
 
                 <Info />

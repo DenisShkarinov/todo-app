@@ -3,7 +3,17 @@ import './todoBody.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-export default function TodoBody ({ todos, handleDoneTask, handleRemove, setFilter, clearCompletedTodos, leftTodos, filter }) {
+export default function TodoBody (
+    {
+        todos,
+        completedTodos,
+        requestDone,
+        requestDeleteTodo,
+        setFilter,
+        clearCompletedTodos,
+        leftTodos,
+        filter
+    }) {
     return (
         <div className={"todo-body"}>
             {
@@ -11,7 +21,7 @@ export default function TodoBody ({ todos, handleDoneTask, handleRemove, setFilt
                     <div key={id} className="todo-item">
                         <button
                             id={done ? 'checked' : null}
-                            onClick={() => handleDoneTask(id)}
+                            onClick={() => requestDone(id, done)}
                             className={'check'}
                         >
                             {
@@ -19,7 +29,7 @@ export default function TodoBody ({ todos, handleDoneTask, handleRemove, setFilt
                             }
                         </button>
                         <p className={ done ? "done" : "" }>{ taskValue }</p>
-                        <button onClick={() => handleRemove(id)} className={"delete"}>X</button>
+                        <button onClick={() => requestDeleteTodo(id)} className={"delete"}>X</button>
                     </div>
                 ))
             }

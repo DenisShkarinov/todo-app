@@ -11,7 +11,7 @@ export default function FilterBlock ({ clearCompletedTodos, setFilter, leftTodos
                 setFilter={setFilter}
                 filter={filter}
             />
-            <ClearComponent clear={clearCompletedTodos} />
+            <ClearComponent clear={() => clearCompletedTodos()} />
         </div>
     )
 }

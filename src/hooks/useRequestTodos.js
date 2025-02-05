@@ -10,12 +10,14 @@ export const useRequestTodos = () => {
 
         return onValue(todosDbRef, (snapshot) => {
             const loadedProducts = snapshot.val();
+
             setTodos(loadedProducts)
         })
     }, []);
 
     return {
         todos,
-        setTodos
+        setTodos,
+
     }
 }
