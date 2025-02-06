@@ -16,20 +16,15 @@ import {useDone} from "./hooks/useDone.js";
 
 function App() {
     const [theme, setTheme] = useState(true);
-    const { todos, setTodos } = useRequestTodos()
-    const { value, setValue, addTodos } = useAddTodo()
-    const { requestDeleteTodo, clearCompletedTodos } = useDeleteTodo()
-    const { requestDone } = useDone()
-
     const [filter, setFilter] = useState("All");
 
+    const { todos, setTodos } = useRequestTodos()
+    const { value, setValue, addTodos } = useAddTodo()
+    const { requestDeleteTodo } = useDeleteTodo()
+    const { requestDone, activeTodos, completedTodos, leftTodos } = useDone(todos)
     const switchTheme = () => {
         setTheme(!theme);
     }
-
-    const completedTodos = Object.fromEntries(Object.entries(todos).filter(([id, { taskValue, done }]) => done === true))
-    const activeTodos = Object.fromEntries(Object.entries(todos).filter(([id, { taskValue, done }]) => !done))
-    const leftTodos = Object.entries(todos).filter(todo => !todo.done).length
 
     useEffect(() => {
         if (theme === false) {
@@ -64,7 +59,7 @@ function App() {
                     requestDone={requestDone}
                     requestDeleteTodo={requestDeleteTodo}
                     setFilter={setFilter}
-                    clearCompletedTodos={clearCompletedTodos}
+                    // clearCompletedTodos={clearCompletedTodos}
                     leftTodos={leftTodos}
                 />
 

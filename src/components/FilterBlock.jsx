@@ -3,7 +3,7 @@ import Filters from "./Filters.jsx";
 import ClearComponent from "./ClearComponent.jsx";
 import "./filters.css";
 
-export default function FilterBlock ({ clearCompletedTodos, setFilter, leftTodos, filter }) {
+export default function FilterBlock ({ setFilter, leftTodos, filter }) {
     return (
         <div className="filters-block">
             <TodosLeft leftTodos={leftTodos} />
@@ -11,7 +11,7 @@ export default function FilterBlock ({ clearCompletedTodos, setFilter, leftTodos
                 setFilter={setFilter}
                 filter={filter}
             />
-            <ClearComponent clear={() => clearCompletedTodos()} />
+            <ClearComponent  />
         </div>
     )
 }

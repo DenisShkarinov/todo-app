@@ -6,11 +6,9 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 export default function TodoBody (
     {
         todos,
-        completedTodos,
         requestDone,
         requestDeleteTodo,
         setFilter,
-        clearCompletedTodos,
         leftTodos,
         filter
     }) {
@@ -35,7 +33,7 @@ export default function TodoBody (
             }
             <FilterBlock
                 setFilter={setFilter}
-                clearCompletedTodos={clearCompletedTodos}
+                // clearCompletedTodos={clearCompletedTodos}
                 leftTodos={leftTodos}
                 filter={filter}
             />

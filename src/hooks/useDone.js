@@ -1,7 +1,11 @@
 import { ref, update } from 'firebase/database'
 import { db } from '../firebase';
 
-export const useDone = () => {
+export const useDone = (todos) => {
+    const completedTodos = Object.fromEntries(Object.entries(todos).filter(([id, { taskValue, done }]) => done === true))
+    const activeTodos = Object.fromEntries(Object.entries(todos).filter(([id, { taskValue, done }]) => !done))
+    const leftTodos = Object.entries(todos).filter(([id, {done, taskValue}]) => !done).length
+
     const requestDone = (id, done) => {
         const doneRef = ref(db, 'todos/' + id)
 
@@ -15,5 +19,8 @@ export const useDone = () => {
     }
     return {
         requestDone,
+        completedTodos,
+        activeTodos,
+        leftTodos
     }
 }
